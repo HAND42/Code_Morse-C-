@@ -3,8 +3,14 @@
 
 #include <Arduino.h>
 
+/*
+LettreMorse class declaration:
+This class allows me to create objects by associating each character with its equivalent in Morse code.
+*/
+
 class LettreMorse
 {
+
 private:
     char _lettre = 0;
     String _morse;

@@ -2,11 +2,10 @@
 #include "LettreMorse/LettreMorse.hpp"
 #include <Arduino.h>
 
-LettreMorse::LettreMorse()
-{
-    ConvertLettertoMorse(_lettre);
-}
-
+/*
+The initializer allows at the time of the creation of the objects to call directly the necessary associated methods.
+It defines two attributes : _lettre and _morse.
+*/
 LettreMorse::LettreMorse(char letter)
 {
 
@@ -14,6 +13,14 @@ LettreMorse::LettreMorse(char letter)
     _morse = "";
     ConvertLettertoMorse(_lettre);
 }
+
+LettreMorse::LettreMorse()
+{
+}
+
+/*
+This method gives the set of Morse code equivalents listed in this function
+*/
 
 void LettreMorse::ConvertLettertoMorse(char letter)
 {

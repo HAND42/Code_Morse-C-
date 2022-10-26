@@ -1,32 +1,23 @@
 #include <Arduino.h>
 #include <Traducteur/Traducteur.hpp>
 
-int pin = 3;
-// static unsigned long Time_between_blinks = 1000;
+int pin = 3; // Pin to connect the led to
+
 Traducteur traducteur = Traducteur();
 
 void setup()
 {
   pinMode(pin, OUTPUT);
+  digitalWrite(pin, LOW); // Set first the LED to LOW
+
   Serial.begin(9600);
-  Serial.println("Enter message:");
-  while (Serial.available() == 0)
-  {
-    // wait for data available
-  }
-  String teststr = Serial.readString(); // read until timeout
-  teststr.trim();
-  traducteur.ReadMessage(teststr); // remove any \r \n whitespace at the end of the Strin
-  digitalWrite(pin, LOW);
+  traducteur.WriteMessage(); // This method ask the user a message to be transmitted
   delay(3000);
-  traducteur.BlinkLED(pin);
+
+  // traducteur.BlinkLED(pin);     (old method)
 }
 
 void loop()
 {
-
-  // digitalWrite(pin, HIGH);
-  // delay(2000);
-  // digitalWrite(pin, LOW);
-  // delay(2000);
+  traducteur.TraduceMessage(pin); // Traduce your message in Morse code through the flashing of a LED
 }
